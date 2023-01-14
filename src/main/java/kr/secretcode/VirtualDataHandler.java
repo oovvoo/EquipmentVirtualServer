@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class VirtualDataHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(System.lineSeparator());
+//        ctx.writeAndFlush(System.lineSeparator());
     }
 
     @Override
@@ -24,6 +24,7 @@ public class VirtualDataHandler extends ChannelInboundHandlerAdapter {
 
         if(msg.toString().equalsIgnoreCase("get")){
             ctx.writeAndFlush(createRandomData());
+            ctx.close();
         }if(msg.toString().equalsIgnoreCase("q!")){
             ctx.close();
         }

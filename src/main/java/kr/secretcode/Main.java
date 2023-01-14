@@ -37,11 +37,14 @@ public class Main {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("invalid argument exception" + System.lineSeparator() + "Start Default Port 7070 Only One Server");
-
+                System.out.println("invalid argument exception" + System.lineSeparator() + "Start Default Port 20000 Only One Server");
             }
+        }else{
+
+            System.out.println("invalid argument exception" + System.lineSeparator() + "Start Default Port 7070 Only One Server");
         }
 
+        startServer(20000,20000);
 
     }
 
@@ -55,8 +58,7 @@ public class Main {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(
-                                new LineBasedFrameDecoder(3)
-                                , new SampleCodec()
+                                 new SampleCodec()
                                 , new VirtualDataHandler()
                         );
                     }
